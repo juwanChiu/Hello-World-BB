@@ -1,0 +1,93 @@
+:root {
+  --pri_colour: #876439;
+  --sec_colour: #c19a6b;
+  --light_colour: #f3ebe2;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  line-height: 1.5;
+  background-color: var(--light_colour);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+i,
+p,
+input {
+  color: var(--pri_colour);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input {
+  background-color: transparent;
+  padding: 0.2rem;
+  font-size: 1rem;
+}
+
+input[type="date"] {
+  border-radius: 10px;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 700px;
+  width: 100%;
+}
+
+.nav-indicator {
+  background-color: var(--pri_colour);
+  height: 3px;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.4s ease-out;
+}
+.slider-container {
+  height: 100vh;
+  display: inline-flex;
+  overflow: hidden;
+  transform: translateX(0);
+  transition: transform 0.4s ease-out;
+  cursor: grab;
+}
+.slide {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  user-select: none;
+}
+
+.first-page {
+  background-color: aquamarine;
+}
+.second-page {
+  background-color: burlywood;
+}
+.third-page {
+  background-color: lightgreen;
+}
+.grabbing {
+  cursor: grabbing;
+}
