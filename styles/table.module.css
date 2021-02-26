@@ -2,8 +2,8 @@
   margin: 0.5rem auto;
   max-width: 700px;
   width: 100%;
-  height: 80vh;
-  overflow-y: scroll;
+  height: 70vh;
+  overflow-y: auto;
 }
 .tableFrame {
   position: relative;
@@ -24,7 +24,7 @@
   border-bottom: none;
 }
 .mainRow .col1 {
-  width: 140px;
+  width: 150px;
 }
 .mainRow .col2 {
   max-width: 550px;

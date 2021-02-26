@@ -10,7 +10,7 @@ const InputForm = ({ index, cssClass }) => {
     [time, setTime] = useState(toTime(new Date())),
     [feedCheck, setFeedCheck] = useState(false),
     [feedMethod, setFeedMethod] = useState(false),
-    [milkAmount, setMilkAmount] = useState(0),
+    [milkAmount, setMilkAmount] = useState(),
     [bathCheck, setBathCheck] = useState(false),
     [washCheck, setWashCheck] = useState(false),
     [peeCheck, setPeeCheck] = useState(false),
@@ -85,20 +85,21 @@ const InputForm = ({ index, cssClass }) => {
       }}
       className="slide">
 
-      <form onMouseDown={(event) => {
-        // event.preventDefault();
-        event.stopPropagation();
-        return false;
-      }}
-        onTouchStart={(event) => {
-          event.stopPropagation();
-          return false;
-        }}
+      <form
+      // onMouseDown={(event) => {
+      //   // event.preventDefault();
+      //   event.stopPropagation();
+      //   return false;
+      // }}
+      //   onTouchStart={(event) => {
+      //     event.stopPropagation();
+      //     return false;
+      //   }}
       >
         {submitDelay ? (
-          <div className={formStyles.container}>
+          <div className={formStyles.container} onLoad={setTimeout(() => setSubmitDelay(false), 3000)}>
             <h2>收到資料了，3秒後回主畫面</h2>
-            {setTimeout(() => setSubmitDelay(false), 3000)}
+            {/* {setTimeout(() => setSubmitDelay(false), 3000)} */}
           </div>) : (
             <div className={formStyles.container}>
               <div className={formStyles.row}>
@@ -132,18 +133,18 @@ const InputForm = ({ index, cssClass }) => {
                   <div className={formStyles.feedContainer}>
 
                     <dir className={formStyles.switchContainer}>
-                      <label>母乳</label>
+                      <label>🤱🏻 </label>
                       <div className={formStyles.switch}>
                         <span onClick={() => setFeedMethod(!feedMethod)} className={feedMethod ? formStyles.toggleOn : undefined} />
                       </div>
-                      <label>奶粉</label>
+                      <label>🍼</label>
                     </dir>
 
                     <div className={formStyles.milkAmountContainer}>
                       <input type="number"
                         onChange={event => setMilkAmount(event.target.value)}
-                        value={milkAmount} />
-                      <label>ml</label>
+                        value={milkAmount} placeholder="安" />
+                      <label>安</label>
                     </div>
 
                   </div>
