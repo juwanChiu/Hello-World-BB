@@ -42,6 +42,7 @@ const MainList = ({ date, time, feed, bathCheck, washCheck, peeCheck, poop }) =>
             (<p className={tableStyles.stateActive}>💩</p>)
             : (<p className={tableStyles.stateInactive}>💩</p>)}
         </div>
+
         <div>
           {poop.poopCheck && (poop.poopQuality < 1 || poop.poopColour > 1 || poop.poopRemark != "") ? <p className={tableStyles.stateCaution}>⚠️</p> : null}
         </div>
