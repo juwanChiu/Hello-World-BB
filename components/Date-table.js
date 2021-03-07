@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import tableStyles from "../styles/table.module.css";
 import dbService from "../database/dbService";
-import { toDate, xDateBefore } from "../utils/date-time";
-import MainTableNav from "./Main-table-nav";
+import Link from "next/link";
 import List from "./Main-list";
 import Slide from "./Slide";
 
-
-const MainTable = ({ index }) => {
-  const [dailyDatas, setDailyDatas] = useState([]),
-    [startDate, setStartDate] = useState(xDateBefore(3, new Date())),
-    [endDate, setEndDate] = useState(toDate(new Date()));
+const DateTable = ({ date, index }) => {
+  const [dateDatas, setDateDatas] = useState([]);
 
   const getDataFromDB = lists => {
     let datas = [];
@@ -40,62 +36,53 @@ const MainTable = ({ index }) => {
         }
       });
     });
-    setDailyDatas(datas);
+    setDateDatas(datas);
   };
 
-  const fetchDataBetweenDate = async (sDate, eDate) => {
+  const fetchDataByDate = async (day) => {
     try {
-      const res = await dbService.getByBetweenDate(sDate, eDate).on("value", getDataFromDB);
+      const res = await dbService.getByDate(day).on("value", getDataFromDB);
     } catch (err) {
       console.error(err);
     }
   }
 
-  const endFetchDataBetweenDate = async (sDate, eDate) => {
+  const endFetchDataByDate = async (day) => {
     try {
-      const res = await dbService.getByBetweenDate(sDate, eDate).off("value", getDataFromDB);
+      const res = await dbService.getByDate(day).off("value", getDataFromDB);
     } catch (err) {
       console.error(err);
     }
   }
 
   useEffect(() => {
-    fetchDataBetweenDate(startDate, endDate);
+    fetchDataByDate(date);
     return () => {
-      endFetchDataBetweenDate(startDate, endDate);
+      endFetchDataByDate(date);
     };
-  }, [startDate, endDate]);
-
-  // useEffect(() => {
-  //   dbService.getAll().on("value", getDataFromDB);
-  //   return () => {
-  //     dbService.getAll().off("value", getDataFromDB);
-  //   };
-  // }, []);
-
-
-
-
+  }, []);
 
   useEffect(() => {
-    console.log(dailyDatas);
-  }, [dailyDatas])
+    console.log(dateDatas);
+  }, [dateDatas])
+
 
 
 
   return (
     <Slide index={index}>
-      <MainTableNav sDate={startDate} changeStart={setStartDate} eDate={endDate} changeEnd={setEndDate} />
+      <Link href="/"><h3>{date}</h3></Link>
       <div className={tableStyles.mainTableContainer}>
         <div className={tableStyles.tableFrame}>
-          {dailyDatas.map((data, i) =>
-            <List key={i} detailed={false} {...data} />
+          {dateDatas.map((data, i) =>
+            <List key={i} detailed {...data} />
           )}
         </div>
+
       </div>
+      <Link href="/"><p>返回主頁</p></Link>
     </Slide>
   );
 }
 
-
-export default MainTable;
+export default DateTable;

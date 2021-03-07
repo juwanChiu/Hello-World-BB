@@ -38,6 +38,7 @@
   width: 50%;
   border-radius: 10px;
   text-align: center;
+  margin-right: 0.5rem;
 }
 .row input[type="text"] {
   width: 100%;

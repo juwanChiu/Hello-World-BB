@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { touchStart, touchMove, touchEnd } from "../utils/touch-animation";
+import React, { useState, useMemo } from 'react';
 import formStyles from "../styles/form.module.css";
 import dbService from "../database/dbService";
 import { toDate, toTime } from "../utils/date-time";
+import Slide from "./Slide";
 
 
 const InputForm = ({ index, cssClass }) => {
   const [date, setDate] = useState(toDate(new Date())),
     [time, setTime] = useState(toTime(new Date())),
     [feedCheck, setFeedCheck] = useState(false),
-    [feedMethod, setFeedMethod] = useState(false),
+    [feedMethod, setFeedMethod] = useState(true),
     [milkAmount, setMilkAmount] = useState(),
     [bathCheck, setBathCheck] = useState(false),
     [washCheck, setWashCheck] = useState(false),
@@ -63,27 +63,9 @@ const InputForm = ({ index, cssClass }) => {
     resetData();
   }
 
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
-
-
 
   return (
-    <div id={index}
-      onTouchStart={(event) => touchStart(event, index)}
-      onTouchEnd={touchEnd}
-      onTouchMove={touchMove}
-      onMouseDown={(event) => touchStart(event, index)}
-      onMouseUp={touchEnd}
-      onMouseLeave={touchEnd}
-      onMouseMove={touchMove}
-      onContextMenu={(event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        return false;
-      }}
-      className="slide">
+    <Slide index={index}>
 
       <form
       // onMouseDown={(event) => {
@@ -98,8 +80,8 @@ const InputForm = ({ index, cssClass }) => {
       >
         {submitDelay ? (
           <div className={formStyles.container} onLoad={setTimeout(() => setSubmitDelay(false), 3000)}>
-            <h2>收到資料了，3秒後回主畫面</h2>
-            {/* {setTimeout(() => setSubmitDelay(false), 3000)} */}
+            <h2>收到資料了</h2>
+            <h2>3秒後回主畫面</h2>
           </div>) : (
             <div className={formStyles.container}>
               <div className={formStyles.row}>
@@ -133,9 +115,9 @@ const InputForm = ({ index, cssClass }) => {
                   <div className={formStyles.feedContainer}>
 
                     <dir className={formStyles.switchContainer}>
-                      <label>🤱🏻 </label>
+                      <label>🤱🏻</label>
                       <div className={formStyles.switch}>
-                        <span onClick={() => setFeedMethod(!feedMethod)} className={feedMethod ? formStyles.toggleOn : undefined} />
+                        <span onClick={() => setFeedMethod(!feedMethod)} className={feedMethod ? formStyles.toggleOn : null} />
                       </div>
                       <label>🍼</label>
                     </dir>
@@ -143,7 +125,7 @@ const InputForm = ({ index, cssClass }) => {
                     <div className={formStyles.milkAmountContainer}>
                       <input type="number"
                         onChange={event => setMilkAmount(event.target.value)}
-                        value={milkAmount} placeholder="安" />
+                        value={milkAmount} placeholder="0" />
                       <label>安</label>
                     </div>
 
@@ -243,7 +225,7 @@ const InputForm = ({ index, cssClass }) => {
           )}
       </form>
 
-    </div>
+    </Slide>
   );
 }
 

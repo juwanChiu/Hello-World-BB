@@ -24,19 +24,41 @@
 .mainRow:last-child {
   border-bottom: none;
 }
+.linkBtn {
+  background-color: var(--sec_colour);
+  color: var(--light_colour);
+  padding: 0.5rem 0.5rem;
+  border-radius: 10px;
+}
+.linkBtn:hover,
+.linkBtn:focus {
+  opacity: 70%;
+}
 .mainRow .col1 {
   min-width: 130px;
 }
 .mainRow .col2 {
   max-width: 550px;
-  /* width: auto; */
-  margin: 0 0.3rem;
+}
+.mainRow .col3 {
+  min-width: 60px;
+  text-align: center;
+}
+.mainRow .row1 {
+  width: 100%;
+  margin: 0.3rem 0.3rem;
   padding: 0 0.2rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
 }
+.mainRow .row2 {
+  width: 100%;
+  margin: 0.3rem 0.3rem;
+  padding: 0 0.2rem;
+}
+
 .stateActive {
   font-size: 1.2rem;
   margin-right: 1rem;
@@ -47,4 +69,7 @@
 }
 .stateCaution {
   font-size: 1.4rem;
+}
+.normalText {
+  margin-right: 1rem;
 }
