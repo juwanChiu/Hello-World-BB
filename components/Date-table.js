@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import tableStyles from "../styles/table.module.css";
 import dbService from "../database/dbService";
-import Link from "next/link";
 import List from "./Main-list";
 import Slide from "./Slide";
+import Button from "./Button";
 
 const DateTable = ({ date, index }) => {
   const [dateDatas, setDateDatas] = useState([]);
@@ -71,7 +71,11 @@ const DateTable = ({ date, index }) => {
 
   return (
     <Slide index={index}>
-      <Link href="/"><h3>{date}</h3></Link>
+      <Button styles={{ marginTop: "-0.5rem" }} href="/">
+        <h3>{date}</h3>
+        <h6>返回主頁</h6>
+      </Button>
+
       <div className={tableStyles.mainTableContainer}>
         <div className={tableStyles.tableFrame}>
           {dateDatas.map((data, i) =>
@@ -80,7 +84,6 @@ const DateTable = ({ date, index }) => {
         </div>
 
       </div>
-      <Link href="/"><p>返回主頁</p></Link>
     </Slide>
   );
 }

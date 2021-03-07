@@ -24,16 +24,6 @@
 .mainRow:last-child {
   border-bottom: none;
 }
-.linkBtn {
-  background-color: var(--sec_colour);
-  color: var(--light_colour);
-  padding: 0.5rem 0.5rem;
-  border-radius: 10px;
-}
-.linkBtn:hover,
-.linkBtn:focus {
-  opacity: 70%;
-}
 .mainRow .col1 {
   min-width: 130px;
 }

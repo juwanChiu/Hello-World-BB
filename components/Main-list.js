@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
 import tableStyles from "../styles/table.module.css";
-import Link from "next/link";
 import { Amount, Colour, Quality } from "./Poop-condition";
+import Button from "./Button";
 
 const MainList = ({ detailed, date, time, feed, bathCheck, washCheck, peeCheck, poop }) => {
   const month = parseInt(date.slice(5, 7)),
@@ -20,9 +19,9 @@ const MainList = ({ detailed, date, time, feed, bathCheck, washCheck, peeCheck, 
       ) :
         (
           <div className={tableStyles.col1}>
-            <Link href="/date/[date]" as={`/date/${date}`}>
-              <a className={tableStyles.linkBtn}>{refacturyDate}, {time}</a>
-            </Link>
+            <Button href="/date/[date]" as={`/date/${date}`}>
+              <a>{refacturyDate}, {time}</a>
+            </Button>
           </div>
         )}
 

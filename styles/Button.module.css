@@ -1,0 +1,19 @@
+.btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sec_colour);
+  color: var(--light_colour);
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+}
+.btn h1,
+.btn h2,
+.btn h3,
+.btn h4,
+.btn h5,
+.btn h6,
+.btn p {
+  color: var(--light_colour);
+}
