@@ -1,0 +1,27 @@
+.switchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.switch {
+  display: flex;
+  width: 3.5rem;
+  height: 2rem;
+  background-color: var(--sec_colour);
+  border: 2px solid var(--pri_colour);
+  border-radius: 30px;
+  align-items: center;
+  margin: 0 0.5rem;
+}
+.switch span {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--pri_colour);
+  border-radius: 50%;
+  margin: 0 0.1rem;
+  justify-content: flex-start;
+  transition: transform 0.3s ease-out;
+}
+.switch .toggleOn {
+  transform: translateX(100%);
+}

@@ -3,114 +3,119 @@
   padding: 1rem;
   border: 2px solid var(--pri_colour);
   border-radius: 10px;
-  font-size: 1.1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 0.5rem;
+  column-gap: 1rem;
 }
-.container label {
+.container h2 {
+  grid-column: 1 / span 2;
+  margin: 0 auto;
+}
+
+/* Input */
+.dateInput {
+  width: 52%;
+  font-size: 1.1rem;
+  margin-right: 1rem;
+}
+.timeInput {
+  width: 45%;
+  font-size: 1.1rem;
+  border-radius: 10px;
   text-align: center;
 }
-.container i {
+.numberInput {
+  width: 50px;
+  border-radius: 10px;
+  text-align: center;
   margin-right: 0.5rem;
 }
-.container button {
+.textInput {
+  grid-column: 1 / span 2;
   width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--pri_colour);
+}
+.btn {
+  grid-column: 1 / span 2;
   font-size: 1.1rem;
   padding: 0.2rem 1rem;
   background-color: var(--sec_colour);
   color: var(--light_colour);
   border-radius: 10px;
 }
-.row {
-  margin-bottom: 0.5rem;
-}
-
-.row input[type="date"] {
-  width: 52%;
-  font-size: 1.1rem;
-  margin-right: 1rem;
-}
-.row input[type="time"] {
-  width: 45%;
-  font-size: 1.1rem;
-  border-radius: 10px;
-  text-align: center;
-}
-.row input[type="number"] {
-  width: 50%;
-  border-radius: 10px;
-  text-align: center;
-  margin-right: 0.5rem;
-}
-.row input[type="text"] {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid var(--pri_colour);
-}
 
 /* sub-container */
-.hideContainer {
-  padding: 0.5rem 0;
-  border-top: 3px dotted var(--pri_colour);
-  border-bottom: 3px dotted var(--pri_colour);
+.generalGrid {
+  width: 45%;
+  justify-content: center;
+  align-content: center;
 }
-.feedContainer {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
+.datetimeTitle {
+  grid-column: 1 / span 2;
 }
-.poopContainer {
-  width: 100%;
+.dateTime {
+  grid-column: 1 / span 2;
   display: flex;
   justify-content: space-between;
 }
-
-.datetimeTitle {
-  margin-bottom: 0.3rem;
-}
-.dateTime {
-  width: 100%;
+.temperature {
   display: flex;
+  justify-content: space-between;
+  align-content: center;
 }
-
-.boxGroup {
+.milkAmount {
+  width: 45%;
   display: flex;
-  margin: 0.5rem 0;
+  justify-content: space-evenly;
+  align-items: center;
 }
-.checkBox {
-  width: 50%;
+.feedContainer {
+  grid-column: 1 / span 2;
   display: flex;
+  justify-content: space-evenly;
+  padding: 0.5rem 0;
+  border-top: 1px dotted var(--pri_colour);
+  border-bottom: 1px dotted var(--pri_colour);
 }
-.none {
+.hideContainer {
   display: none;
 }
-.milkAmountContainer {
-  text-align: right;
+.poopContainer {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-top: 1px dotted var(--pri_colour);
+  border-bottom: 1px dotted var(--pri_colour);
 }
 
-/* Toggle Switch */
-.switchContainer {
-  width: 50%;
-  display: flex;
-  align-items: center;
-}
-.switch {
-  display: flex;
-  width: 4rem;
-  height: 2rem;
-  background-color: var(--sec_colour);
-  border: 2px solid var(--pri_colour);
-  border-radius: 30px;
-  align-items: center;
-  margin: 0 0.5rem;
-}
-.switch span {
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: var(--pri_colour);
-  border-radius: 50%;
-  margin: 0 0.1rem;
-  justify-content: flex-start;
-  transition: transform 0.3s ease-out;
-}
-.switch .toggleOn {
-  transform: translateX(135%);
+@media (min-width: 640px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+  }
+  .textInput {
+    grid-column: 1 / span 4;
+  }
+  .btn {
+    grid-column: 1 / span 4;
+  }
+  .datetimeTitle {
+    grid-column: 1 / span 1;
+  }
+  .dateTime {
+    grid-column: 2 / span 3;
+  }
+  .feedContainer {
+    grid-column: 3 / span 2;
+    border: none;
+    border-left: 2px dotted var(--pri_colour);
+  }
+  .poopContainer {
+    grid-column: 1 / span 4;
+    grid-template-columns: 1fr 3fr 1fr 3fr;
+  }
 }

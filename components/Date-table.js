@@ -19,6 +19,7 @@ const DateTable = ({ date, index }) => {
         key: key,
         date: dataInDB.date,
         time: dataInDB.time,
+        temperature: dataInDB.temperature,
         feed: {
           feedCheck: dataInDB.feed.feedCheck,
           feedMethod: dataInDB.feed.feedMethod,
@@ -33,7 +34,8 @@ const DateTable = ({ date, index }) => {
           poopQuality: dataInDB.poop.poopQuality,
           poopColour: dataInDB.poop.poopColour,
           poopRemark: dataInDB.poop.poopRemark
-        }
+        },
+        remark: dataInDB.remark
       });
     });
     setDateDatas(datas);

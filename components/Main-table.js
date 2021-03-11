@@ -23,6 +23,7 @@ const MainTable = ({ index }) => {
         key: key,
         date: dataInDB.date,
         time: dataInDB.time,
+        temperature: dataInDB.temperature,
         feed: {
           feedCheck: dataInDB.feed.feedCheck,
           feedMethod: dataInDB.feed.feedMethod,
@@ -37,7 +38,8 @@ const MainTable = ({ index }) => {
           poopQuality: dataInDB.poop.poopQuality,
           poopColour: dataInDB.poop.poopColour,
           poopRemark: dataInDB.poop.poopRemark
-        }
+        },
+        remark: dataInDB.remark
       });
     });
     setDailyDatas(datas);
@@ -66,20 +68,9 @@ const MainTable = ({ index }) => {
     };
   }, [startDate, endDate]);
 
-  // useEffect(() => {
-  //   dbService.getAll().on("value", getDataFromDB);
-  //   return () => {
-  //     dbService.getAll().off("value", getDataFromDB);
-  //   };
-  // }, []);
-
-
-
-
-
   useEffect(() => {
     console.log(dailyDatas);
-  }, [dailyDatas])
+  }, [dailyDatas]);
 
 
 

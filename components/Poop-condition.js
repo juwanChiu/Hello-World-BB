@@ -20,7 +20,7 @@ export const Colour = ({ value }) => {
     case 2:
       return "綠";
     case 3:
-      return "紅";
+      return "其他";
     default:
       return null;
   };

@@ -2,7 +2,7 @@ import tableStyles from "../styles/table.module.css";
 import { Amount, Colour, Quality } from "./Poop-condition";
 import Button from "./Button";
 
-const MainList = ({ detailed, date, time, feed, bathCheck, washCheck, peeCheck, poop }) => {
+const MainList = ({ detailed, date, time, temperature, feed, bathCheck, washCheck, peeCheck, poop, remark }) => {
   const month = parseInt(date.slice(5, 7)),
     day = parseInt(date.slice(8, 10)),
     refacturyDate = month.toString() + "月" + day.toString() + "日";
@@ -28,6 +28,11 @@ const MainList = ({ detailed, date, time, feed, bathCheck, washCheck, peeCheck, 
       <div className={tableStyles.col2}>
         <div className={tableStyles.row1}>
 
+          <div>
+            {(temperature > 30 && temperature < 45) ?
+              (<p className={tableStyles.stateActive}>🤒  {temperature}  ℃</p>)
+              : (<p className={tableStyles.stateInactive}>🤒</p>)}
+          </div>
 
           <div>
             {feed.feedCheck ?
@@ -82,13 +87,23 @@ const MainList = ({ detailed, date, time, feed, bathCheck, washCheck, peeCheck, 
                 <div>
                   <p className={tableStyles.normalText}>顏色：<Colour value={poop.poopColour} /></p>
                 </div>
+
+                {poop.poopRemark != "" ?
+                  (
+                    <div>
+                      <p>💩 ：{poop.poopRemark}</p>
+                    </div>
+                  ) : null}
+                <div>
+
+                </div>
               </>
             ) : null}
         </div>
-        {(detailed && poop.poopRemark != "") ?
+        {(detailed && remark != "") ?
           (
             <div className={tableStyles.row2}>
-              <p>備註：{poop.poopRemark}</p>
+              <p>備註：{remark}</p>
             </div>
           ) : null}
 
